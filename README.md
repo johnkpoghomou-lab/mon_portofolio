@@ -30,8 +30,7 @@ Welcome to my professional portfolio! This is a high-performance, responsive Sin
 
 | Desktop View | Mobile View |
 |--------------|-------------|
-| ![Desktop Screenshot]("https://github.com/user-attachments/assets/8541a8ab-7b78-458e-a064-a109bec3f3ec") | 
-![Mobile Screenshot]("https://github.com/user-attachments/assets/ad1cf09d-38eb-4945-9deb-c20d7c232944") |
+| ![Desktop Screenshot]("https://github.com/user-attachments/assets/8541a8ab-7b78-458e-a064-a109bec3f3ec") | ![Mobile Screenshot]("https://github.com/user-attachments/assets/ad1cf09d-38eb-4945-9deb-c20d7c232944") |
 
 ---
 
