@@ -58,7 +58,6 @@ Let's build something amazing together!
 
 - **WhatsApp**: [+224 626 66 13 14](https://wa.me/224626661314)
 - **Email**: [johnkpoghomou@gmail.com](mailto:johnkpoghomou@gmail.com)
-- **LinkedIn**: [Your Profile Link Here]
 
 ---
 
