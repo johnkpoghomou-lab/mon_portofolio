@@ -1,0 +1,4 @@
+- [x] Update project data with more details
+- [x] Implement `_showProjectDetails` dialog in `projets_section.dart`
+- [x] Connect click events (Button and Card) to the dialog
+- [x] Verify functionality in web build

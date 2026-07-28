@@ -8,20 +8,26 @@ class ProjectsSection extends StatelessWidget {
     {
       "title": "BizGuinée",
       "description": "Système complet de gestion commerciale optimisé pour le marché Guinéen.",
+      "longDescription": "BizGuinée est une solution robuste conçue pour répondre aux défis spécifiques de la gestion commerciale en Guinée. Elle permet le suivi des stocks en temps réel, la gestion des ventes, et la génération de rapports financiers détaillés.",
       "tech": ["Flutter", "Firebase", "Hive"],
       "image": "assets/images/bizguinee.png",
+      "features": ["Gestion de stock", "Facturation", "Rapports PDF", "Mode hors-ligne"],
     },
     {
       "title": "NoteApp",
       "description": "Prise de notes sécurisée avec interface minimaliste et synchronisation locale.",
+      "longDescription": "Une application de prise de notes moderne qui met l'accent sur la confidentialité et la simplicité. Utilisant Hive pour un stockage ultra-rapide, vos notes sont toujours disponibles, même sans connexion internet.",
       "tech": ["Flutter", "Hive", "Quill"],
       "image": "assets/images/noteapp.png",
+      "features": ["Éditeur Rich Text", "Recherche instantanée", "Thème sombre", "Sauvegarde auto"],
     },
     {
       "title": "Chorale App",
       "description": "Répertoire numérique de chants et gestion des partitions liturgiques.",
+      "longDescription": "Cette application centralise des centaines de chants liturgiques. Elle permet aux chorales de gérer leurs répertoires, d'accéder aux partitions et de préparer les célébrations de manière collaborative.",
       "tech": ["Flutter", "Firebase"],
       "image": "assets/images/chorale.png",
+      "features": ["Accès hors-ligne", "Gestion par catégories", "Favoris", "Partage de listes"],
     },
   ];
 
@@ -95,12 +101,111 @@ class _ProjectCard extends StatefulWidget {
 class _ProjectCardState extends State<_ProjectCard> {
   bool isHovered = false;
 
+  void _showProjectDetails(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 800),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                      child: Image.asset(
+                        widget.project["image"],
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.cover,
+                        errorBuilder: (c, e, s) => Container(
+                          height: 300,
+                          color: Colors.blue.shade50,
+                          child: const Icon(Icons.image, size: 80, color: Colors.blue),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      right: 10,
+                      top: 10,
+                      child: CircleAvatar(
+                        backgroundColor: Colors.white,
+                        child: IconButton(
+                          icon: const Icon(Icons.close, color: Colors.black),
+                          onPressed: () => Navigator.pop(context),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.project["title"],
+                        style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Wrap(
+                        spacing: 10,
+                        children: (widget.project["tech"] as List<String>).map((t) => Chip(
+                          label: Text(t),
+                          backgroundColor: Colors.blue.shade50,
+                          labelStyle: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                        )).toList(),
+                      ),
+                      const SizedBox(height: 20),
+                      const Text(
+                        "À propos du projet",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        widget.project["longDescription"] ?? widget.project["description"],
+                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.6),
+                      ),
+                      const SizedBox(height: 25),
+                      const Text(
+                        "Fonctionnalités clés",
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      if (widget.project["features"] != null)
+                        ... (widget.project["features"] as List<String>).map((f) => Padding(
+                          padding: const EdgeInsets.only(bottom: 8),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.check_circle, color: Colors.green, size: 20),
+                              const SizedBox(width: 10),
+                              Text(f, style: const TextStyle(fontSize: 16)),
+                            ],
+                          ),
+                        )),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
-      child: AnimatedContainer(
+      child: GestureDetector(
+        onTap: () => _showProjectDetails(context),
+        child: AnimatedContainer(
         duration: 300.ms,
         curve: Curves.easeOutCubic,
         transform: isHovered ? (Matrix4.identity()..translate(0, -10, 0)) : Matrix4.identity(),
@@ -156,7 +261,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                         ),
                         child: Center(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => _showProjectDetails(context),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.white,
                               foregroundColor: Colors.blue,
@@ -227,6 +332,7 @@ class _ProjectCardState extends State<_ProjectCard> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }
