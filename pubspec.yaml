@@ -74,8 +74,8 @@ flutter:
   assets:
     - assets/images/1.jpg
     - assets/images/bizguinee.png
-    - assets/images/chorale.jpg
-    - assets/images/noteapp.jpg
+    - assets/images/chorale.png
+    - assets/images/noteapp.png
     - assets/cv.pdf
     - assets/icons/
   #   - images/a_dot_burr.jpeg

@@ -35,7 +35,6 @@ class HeroSection extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         bool isMobile = constraints.maxWidth < 800;
-
         return Container(
           width: double.infinity,
           constraints: BoxConstraints(

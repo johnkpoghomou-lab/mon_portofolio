@@ -56,7 +56,7 @@ class AppFooter extends StatelessWidget {
               ),
               _socialIcon(
                 icon: Icons.email,
-                onTap: () => _launchURL("mailto:johnkpoghomou@gmail.com"),
+                onTap: () => _launchURL("mailto:kpoghomoucodeur6@gmail.com"),
               ),
             ],
           ),
@@ -78,7 +78,7 @@ class AppFooter extends StatelessWidget {
               const Text("Fait avec ", style: TextStyle(color: Colors.white70, fontSize: 12)),
               const Icon(Icons.favorite, color: Colors.red, size: 14),
               const Text(" et ", style: TextStyle(color: Colors.white70, fontSize: 12)),
-              const Text("Flutter", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 12)),
+              const Text("courage", style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 12)),
             ],
           ),
         ],

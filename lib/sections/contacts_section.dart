@@ -36,8 +36,8 @@ class ContactSection extends StatelessWidget {
               _ContactCard(
                 icon: Icons.email,
                 title: "Email",
-                value: "johnkpoghomou@gmail.com",
-                onTap: () => _launchURL("mailto:johnkpoghomou@gmail.com"),
+                value: "kpoghomoucodeur6@gmail.com",
+                onTap: () => _launchURL("mailto:kpoghomoucodeur6@gmail.com"),
               ),
               _ContactCard(
                 icon: Icons.phone,
@@ -135,9 +135,10 @@ class _ContactCardState extends State<_ContactCard> {
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
                   color: widget.color.withOpacity(0.1),
                   shape: BoxShape.circle,

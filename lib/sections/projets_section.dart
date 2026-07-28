@@ -15,13 +15,13 @@ class ProjectsSection extends StatelessWidget {
       "title": "NoteApp",
       "description": "Prise de notes sécurisée avec interface minimaliste et synchronisation locale.",
       "tech": ["Flutter", "Hive", "Quill"],
-      "image": "assets/images/noteapp.jpg",
+      "image": "assets/images/noteapp.png",
     },
     {
       "title": "Chorale App",
       "description": "Répertoire numérique de chants et gestion des partitions liturgiques.",
       "tech": ["Flutter", "Firebase"],
-      "image": "assets/images/chorale.jpg",
+      "image": "assets/images/chorale.png",
     },
   ];
 
