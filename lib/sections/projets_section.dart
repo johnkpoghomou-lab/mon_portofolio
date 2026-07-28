@@ -102,9 +102,13 @@ class _ProjectCardState extends State<_ProjectCard> {
   bool isHovered = false;
 
   void _showProjectDetails(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isMobile = size.width < 600;
+
     showDialog(
       context: context,
       builder: (context) => Dialog(
+        insetPadding: EdgeInsets.symmetric(horizontal: isMobile ? 15 : 40, vertical: 24),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 800),
@@ -120,10 +124,10 @@ class _ProjectCardState extends State<_ProjectCard> {
                       child: Image.asset(
                         widget.project["image"],
                         width: double.infinity,
-                        height: 300,
+                        height: isMobile ? 200 : 300,
                         fit: BoxFit.cover,
                         errorBuilder: (c, e, s) => Container(
-                          height: 300,
+                          height: isMobile ? 200 : 300,
                           color: Colors.blue.shade50,
                           child: const Icon(Icons.image, size: 80, color: Colors.blue),
                         ),
@@ -133,7 +137,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                       right: 10,
                       top: 10,
                       child: CircleAvatar(
-                        backgroundColor: Colors.white,
+                        backgroundColor: Colors.white.withOpacity(0.9),
                         child: IconButton(
                           icon: const Icon(Icons.close, color: Colors.black),
                           onPressed: () => Navigator.pop(context),
@@ -143,19 +147,25 @@ class _ProjectCardState extends State<_ProjectCard> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(30),
+                  padding: EdgeInsets.all(isMobile ? 20 : 30),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         widget.project["title"],
-                        style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: isMobile ? 26 : 32, 
+                          fontWeight: FontWeight.bold
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Wrap(
-                        spacing: 10,
+                        spacing: 8,
+                        runSpacing: 4,
                         children: (widget.project["tech"] as List<String>).map((t) => Chip(
-                          label: Text(t),
+                          label: Text(t, style: const TextStyle(fontSize: 12)),
+                          padding: EdgeInsets.zero,
+                          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           backgroundColor: Colors.blue.shade50,
                           labelStyle: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
                         )).toList(),
@@ -163,27 +173,33 @@ class _ProjectCardState extends State<_ProjectCard> {
                       const SizedBox(height: 20),
                       const Text(
                         "À propos du projet",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 10),
                       Text(
                         widget.project["longDescription"] ?? widget.project["description"],
-                        style: TextStyle(fontSize: 16, color: Colors.grey.shade800, height: 1.6),
+                        style: TextStyle(fontSize: 15, color: Colors.grey.shade800, height: 1.5),
                       ),
                       const SizedBox(height: 25),
                       const Text(
                         "Fonctionnalités clés",
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 10),
                       if (widget.project["features"] != null)
                         ... (widget.project["features"] as List<String>).map((f) => Padding(
-                          padding: const EdgeInsets.only(bottom: 8),
+                          padding: const EdgeInsets.only(bottom: 10),
                           child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Icon(Icons.check_circle, color: Colors.green, size: 20),
+                              const Icon(Icons.check_circle, color: Colors.green, size: 18),
                               const SizedBox(width: 10),
-                              Text(f, style: const TextStyle(fontSize: 16)),
+                              Expanded(
+                                child: Text(
+                                  f, 
+                                  style: const TextStyle(fontSize: 15),
+                                ),
+                              ),
                             ],
                           ),
                         )),
