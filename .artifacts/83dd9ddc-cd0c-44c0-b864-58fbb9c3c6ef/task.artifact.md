@@ -4,8 +4,8 @@
 - [x] Verify functionality in web build
 - [x] Fix mobile overflow in `_showProjectDetails`
 - [x] Test responsiveness in mobile view
-- [/] SEO Optimization
-    - [ ] Update `web/index.html` with title, meta tags, and Open Graph
-    - [ ] Create `web/robots.txt`
-    - [ ] Create `web/sitemap.xml`
-    - [ ] Rebuild and deploy
+- [x] SEO Optimization
+    - [x] Update `web/index.html` with title, meta tags, and Open Graph
+    - [x] Create `web/robots.txt`
+    - [x] Create `web/sitemap.xml`
+    - [x] Rebuild and deploy
