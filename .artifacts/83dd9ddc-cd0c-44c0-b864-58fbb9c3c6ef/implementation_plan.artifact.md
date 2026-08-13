@@ -1,31 +1,41 @@
-# Implementation Plan - Fix Mobile Overflow in Project Details
+# Implementation Plan - SEO Optimization for Portfolio
 
-Resolve the layout overflow issue when viewing project details on mobile devices by making the dialog responsive and ensuring text wraps correctly.
+Improve the visibility of the portfolio on search engines (Google, etc.) by implementing essential SEO meta tags and configuration files.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> The fix involves making the dialog adapt its size, padding, and font sizes based on the screen width. I will also ensure that long feature descriptions wrap to the next line instead of causing an overflow.
+> Voici ma proposition pour votre référencement. Est-ce que cela vous convient ?
+>
+> **Titre du site** : `John Kpoghomou | Développeur Flutter & Web - Solutions Digitales`
+>
+> **Description du site** : `Découvrez le portfolio de John Kpoghomou, développeur Flutter & Web passionné. Expertise en création d'applications modernes, rapides et performantes comme BizGuinée et NoteApp.`
+>
+> **Mots-clés** : `John Kpoghomou, Développeur Flutter Guinée, Mobile App Developer, Portfolio Flutter, BizGuinée, Développement Web, Dart, Firebase.`
 
 ## Proposed Changes
 
-### Portfolio Section
+### Web Configuration
 
-#### [MODIFY] [projets_section.dart](file:///C:/Projets/mon_portofolio/lib/sections/projets_section.dart)
-- **Responsive Dialog**:
-    - Add `insetPadding` to the `Dialog` to prevent it from touching screen edges on mobile.
-    - Adjust the image height (e.g., 200 on mobile vs 300 on desktop).
-    - Adjust the title font size and general padding based on screen width.
-- **Fix Feature List Overflow**:
-    - Wrap the feature text in an `Expanded` widget within the `Row` to ensure it wraps when it's too long.
-- **General Improvements**:
-    - Ensure the close button remains accessible and clearly visible.
+#### [MODIFY] [index.html](file:///C:/Projets/mon_portofolio/web/index.html)
+- **Update Title**: Change from "mon_portofolio" to a professional descriptive title.
+- **Update Description**: Replace "A new Flutter project" with a meaningful summary of your skills and services.
+- **Add Keywords**: Include relevant terms like "Flutter", "Guinée", "Développeur Mobile", "BizGuinée", etc.
+- **Add Open Graph Tags**: Improve how the site looks when shared on LinkedIn, Facebook, or Twitter.
+- **Add Canonical URL**: Help search engines identify the primary version of your site.
+
+#### [NEW] [robots.txt](file:///C:/Projets/mon_portofolio/web/robots.txt)
+- Create a file to tell search engine crawlers which parts of your site they can access.
+
+#### [NEW] [sitemap.xml](file:///C:/Projets/mon_portofolio/web/sitemap.xml)
+- Create a basic sitemap to help Google index your page faster.
 
 ## Verification Plan
 
 ### Manual Verification
-- Run the Flutter web app.
-- Use Chrome DevTools to simulate different mobile devices (iPhone SE, Pixel 7, etc.).
-- Open the project details dialog.
-- Verify that there are no "Yellow/Black" overflow warnings.
-- Ensure the text is readable and the layout looks balanced on both mobile and desktop.
+- View the page source in the browser to verify new meta tags.
+- Use an online SEO analyzer (like SEOquake or specialized websites) to check for missing tags.
+- Verify the `robots.txt` and `sitemap.xml` are accessible at `your-site.com/robots.txt`.
+
+> [!NOTE]
+> SEO changes are not instant. It can take a few days or weeks for Google to crawl and index your site with the new information.
