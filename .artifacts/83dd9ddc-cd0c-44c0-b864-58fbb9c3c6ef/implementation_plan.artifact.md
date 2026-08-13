@@ -1,41 +1,51 @@
-# Implementation Plan - SEO Optimization for Portfolio
+# Implementation Plan - Modern Tech & Glassmorphism UI Upgrade
 
-Improve the visibility of the portfolio on search engines (Google, etc.) by implementing essential SEO meta tags and configuration files.
+Upgrade the portfolio's visual identity to a modern "Tech" look featuring Glassmorphism, animated backgrounds, and polished interactions.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> Voici ma proposition pour votre référencement. Est-ce que cela vous convient ?
->
-> **Titre du site** : `John Kpoghomou | Développeur Flutter & Web - Solutions Digitales`
->
-> **Description du site** : `Découvrez le portfolio de John Kpoghomou, développeur Flutter & Web passionné. Expertise en création d'applications modernes, rapides et performantes comme BizGuinée et NoteApp.`
->
-> **Mots-clés** : `John Kpoghomou, Développeur Flutter Guinée, Mobile App Developer, Portfolio Flutter, BizGuinée, Développement Web, Dart, Firebase.`
+> This upgrade will change the global look and feel of your site.
+> 1. **Floating Navbar**: The menu will now "float" at the top of the screen as you scroll.
+> 2. **Animated Background**: I will add subtle blurred "blobs" in the background to add depth.
+> 3. **Interactivity**: Cards will have a more pronounced "Glow" effect when hovered.
 
 ## Proposed Changes
 
-### Web Configuration
+### Global Layout & Background
 
-#### [MODIFY] [index.html](file:///C:/Projets/mon_portofolio/web/index.html)
-- **Update Title**: Change from "mon_portofolio" to a professional descriptive title.
-- **Update Description**: Replace "A new Flutter project" with a meaningful summary of your skills and services.
-- **Add Keywords**: Include relevant terms like "Flutter", "Guinée", "Développeur Mobile", "BizGuinée", etc.
-- **Add Open Graph Tags**: Improve how the site looks when shared on LinkedIn, Facebook, or Twitter.
-- **Add Canonical URL**: Help search engines identify the primary version of your site.
+#### [MODIFY] [home_screen.dart](file:///C:/Projets/mon_portofolio/lib/screens/home/home_screen.dart)
+- Wrap the main `Scaffold` content in a `Stack`.
+- Add a `BackgroundDecorations` widget behind the scrollable content.
+- Move the `Navbar` inside the `Stack` and wrap it with `Positioned` to make it float.
 
-#### [NEW] [robots.txt](file:///C:/Projets/mon_portofolio/web/robots.txt)
-- Create a file to tell search engine crawlers which parts of your site they can access.
+#### [NEW] [background_blobs.dart](file:///C:/Projets/mon_portofolio/lib/core/widgets/background_blobs.dart)
+- Create a widget that renders large, blurred, semi-transparent circles at various positions to create a "Mesh Gradient" effect.
 
-#### [NEW] [sitemap.xml](file:///C:/Projets/mon_portofolio/web/sitemap.xml)
-- Create a basic sitemap to help Google index your page faster.
+### Floating Glass Navbar
+
+#### [MODIFY] [navbar.dart](file:///C:/Projets/mon_portofolio/lib/core/widgets/navbar.dart)
+- Update the `Container` to use `BackdropFilter` (blur) and a semi-transparent background.
+- Add a thin border and rounded corners.
+- Reduce height and width slightly to give it a "floating island" look.
+
+### Section Upgrades
+
+#### [MODIFY] [hero_section.dart](file:///C:/Projets/mon_portofolio/lib/sections/hero_section.dart)
+- Use `ShaderMask` for the name "John Kpoghomou" to create a premium blue-to-cyan gradient.
+- Refine the profile image shadow to be more "diffused".
+
+#### [MODIFY] [skills_section.dart](file:///C:/Projets/mon_portofolio/lib/sections/skills_section.dart)
+- Update `_SkillCard` to have a "Glass" look.
+- Implement a border glow effect that matches the skill's color on hover.
+
+#### [MODIFY] [projets_section.dart](file:///C:/Projets/mon_portofolio/lib/sections/projets_section.dart)
+- Synchronize card styles with the new "Tech" aesthetic.
 
 ## Verification Plan
 
 ### Manual Verification
-- View the page source in the browser to verify new meta tags.
-- Use an online SEO analyzer (like SEOquake or specialized websites) to check for missing tags.
-- Verify the `robots.txt` and `sitemap.xml` are accessible at `your-site.com/robots.txt`.
-
-> [!NOTE]
-> SEO changes are not instant. It can take a few days or weeks for Google to crawl and index your site with the new information.
+- **Web Layout**: Check that the Navbar remains readable and functional while floating.
+- **Scrolling**: Verify that background blobs don't interfere with content readability.
+- **Hover Effects**: Test that all card animations (Skills, Projects) are smooth and responsive.
+- **Mobile View**: Ensure the "Floating" navbar doesn't take too much space on small screens.

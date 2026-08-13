@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -79,30 +80,44 @@ class _SkillCardState extends State<_SkillCard> {
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: AnimatedContainer(
-        duration: 200.ms,
+        duration: 300.ms,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          color: isHovered ? Colors.white : Colors.white.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: isHovered ? widget.iconColor.withOpacity(0.2) : Colors.black12,
-              blurRadius: isHovered ? 15 : 5,
+              color: isHovered ? widget.iconColor.withOpacity(0.2) : Colors.black.withOpacity(0.03),
+              blurRadius: isHovered ? 25 : 10,
+              offset: isHovered ? const Offset(0, 10) : const Offset(0, 5),
             )
           ],
-          border: Border.all(color: isHovered ? widget.iconColor : Colors.transparent),
+          border: Border.all(
+            color: isHovered ? widget.iconColor.withOpacity(0.5) : Colors.white.withOpacity(0.3),
+            width: 1.5,
+          ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(widget.icon, size: 45, color: widget.iconColor)
-                .animate(target: isHovered ? 1 : 0)
-                .scale(end: const Offset(1.2, 1.2)),
-            const SizedBox(height: 12),
-            Text(
-              widget.name,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(widget.icon, size: 45, color: widget.iconColor)
+                    .animate(target: isHovered ? 1 : 0)
+                    .scale(end: const Offset(1.15, 1.15)),
+                const SizedBox(height: 15),
+                Text(
+                  widget.name,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    color: isHovered ? Colors.black87 : Colors.black54,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

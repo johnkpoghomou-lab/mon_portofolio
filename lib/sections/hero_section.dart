@@ -92,13 +92,18 @@ class HeroSection extends StatelessWidget {
   }
 
   Widget _buildMainTitle() {
-    return const Text(
-      'John Kpoghomou',
-      style: TextStyle(
-        fontSize: 40,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF0D47A1), // Deep Professional Blue
-        letterSpacing: -1,
+    return ShaderMask(
+      shaderCallback: (bounds) => const LinearGradient(
+        colors: [Color(0xFF0D47A1), Color(0xFF42A5F5), Color(0xFF26C6DA)],
+      ).createShader(bounds),
+      child: const Text(
+        'John Kpoghomou',
+        style: TextStyle(
+          fontSize: 45,
+          fontWeight: FontWeight.bold,
+          color: Colors.white, // Required for ShaderMask
+          letterSpacing: -1,
+        ),
       ),
     ).animate().fadeIn(delay: 200.ms).slideY(begin: 0.2);
   }
@@ -172,10 +177,13 @@ class HeroSection extends StatelessWidget {
       children: [
         // Decorative pulsing ring
         Container(
-          width: size + 20,
-          height: size + 20,
-          decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: Colors.blue.withOpacity(0.2), width: 2)),
-        ).animate(onPlay: (c) => c.repeat()).scale(duration: 2.seconds, begin: const Offset(1,1), end: const Offset(1.2, 1.2)).fadeOut(),
+          width: size + 40,
+          height: size + 40,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.blue.withOpacity(0.1), width: 1.5),
+          ),
+        ).animate(onPlay: (c) => c.repeat()).scale(duration: 3.seconds, begin: const Offset(1,1), end: const Offset(1.3, 1.3)).fadeOut(),
 
         // The Photo
         Container(
@@ -185,7 +193,12 @@ class HeroSection extends StatelessWidget {
             shape: BoxShape.circle,
             border: Border.all(color: Colors.white, width: 8),
             boxShadow: [
-              BoxShadow(color: Colors.blue.withOpacity(0.2), blurRadius: 40, spreadRadius: 10)
+              BoxShadow(
+                color: Colors.blue.withOpacity(0.15),
+                blurRadius: 60,
+                spreadRadius: 10,
+                offset: const Offset(0, 10),
+              )
             ],
           ),
           child: ClipOval(

@@ -226,11 +226,15 @@ class _ProjectCardState extends State<_ProjectCard> {
         curve: Curves.easeOutCubic,
         transform: isHovered ? (Matrix4.identity()..translate(0, -10, 0)) : Matrix4.identity(),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Colors.white.withOpacity(0.8),
           borderRadius: BorderRadius.circular(25),
+          border: Border.all(
+            color: isHovered ? Colors.blue.withOpacity(0.3) : Colors.white.withOpacity(0.5),
+            width: 1.5,
+          ),
           boxShadow: [
             BoxShadow(
-              color: isHovered ? Colors.blue.withOpacity(0.2) : Colors.black.withOpacity(0.06),
+              color: isHovered ? Colors.blue.withOpacity(0.15) : Colors.black.withOpacity(0.04),
               blurRadius: isHovered ? 40 : 20,
               offset: const Offset(0, 15),
             )

@@ -1,11 +1,9 @@
-- [x] Update project data with more details
-- [x] Implement `_showProjectDetails` dialog in `projets_section.dart`
-- [x] Connect click events (Button and Card) to the dialog
-- [x] Verify functionality in web build
-- [x] Fix mobile overflow in `_showProjectDetails`
-- [x] Test responsiveness in mobile view
 - [x] SEO Optimization
-    - [x] Update `web/index.html` with title, meta tags, and Open Graph
-    - [x] Create `web/robots.txt`
-    - [x] Create `web/sitemap.xml`
-    - [x] Rebuild and deploy
+- [x] Modern Tech & Glassmorphism UI Upgrade
+    - [x] Create `BackgroundDecorations` widget
+    - [x] Implement Floating Glass Navbar
+    - [x] Add ShaderMask gradient to Hero name
+    - [x] Upgrade Skills cards with Glassmorphism
+    - [x] Polish Project cards
+    - [x] Integrate background blobs in `HomeScreen`
+- [ ] Final verification and deployment

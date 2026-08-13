@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mon_portofolio/core/widgets/background_blobs.dart';
 import 'package:mon_portofolio/core/widgets/navbar.dart';
 import 'package:mon_portofolio/sections/about_section.dart';
 import 'package:mon_portofolio/sections/contacts_section.dart';
@@ -41,37 +42,52 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Pass keys and scroll function to Drawer
       drawer: MyDrawer(sectionKeys: sectionKeys, onScroll: scrollToSection),
-      body: Column(
+      body: Stack(
         children: [
-          // Pass keys and scroll function to Navbar
-          Navbar(sectionKeys: sectionKeys, onScroll: scrollToSection),
+          // 1. Background Layer
+          const BackgroundDecorations(),
 
-          Expanded(
-            child: ScrollConfiguration(
-              behavior: ScrollConfiguration.of(context).copyWith(
-                scrollbars: true,
-                physics: const BouncingScrollPhysics(),//add that smoth bound
-              ),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    HeroSection(key: homeKey, projectKey: projectsKey), // Hero usually animates on start
+          // 2. Scrollable Content Layer
+          Column(
+            children: [
+              Expanded(
+                child: ScrollConfiguration(
+                  behavior: ScrollConfiguration.of(context).copyWith(
+                    scrollbars: true,
+                    physics: const BouncingScrollPhysics(),
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        // Space for floating Navbar
+                        const SizedBox(height: 100),
 
-                    SmoothFade(child: About(key: aboutKey)),
+                        HeroSection(key: homeKey, projectKey: projectsKey),
 
-                    SmoothFade(child: SkillsSection(key: skillsKey)),
+                        SmoothFade(child: About(key: aboutKey)),
 
-                    SmoothFade(child: ProjectsSection(key: projectsKey)),
+                        SmoothFade(child: SkillsSection(key: skillsKey)),
 
-                    SmoothFade(child: ContactSection(key: contactKey)),
+                        SmoothFade(child: ProjectsSection(key: projectsKey)),
 
-                    const AppFooter(),
-                  ],
+                        SmoothFade(child: ContactSection(key: contactKey)),
+
+                        const AppFooter(),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
+            ],
+          ),
+
+          // 3. Floating Navbar Layer
+          Positioned(
+            top: 20,
+            left: 0,
+            right: 0,
+            child: Navbar(sectionKeys: sectionKeys, onScroll: scrollToSection),
           ),
         ],
       ),
