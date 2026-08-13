@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johnkpoghomou.netlify.app/sitemap.xml
+Sitemap: https://codeur6-portofolio.netlify.app/sitemap.xml
