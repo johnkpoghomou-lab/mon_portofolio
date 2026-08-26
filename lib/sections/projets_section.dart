@@ -203,6 +203,30 @@ class _ProjectCardState extends State<_ProjectCard> {
                             ],
                           ),
                         )),
+                      const SizedBox(height: 30),
+                      const Divider(),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _buildStoreButton(
+                              icon: Icons.play_arrow_rounded,
+                              text: "Google Play",
+                              subText: "Bientôt disponible",
+                              color: Colors.black,
+                            ),
+                          ),
+                          const SizedBox(width: 15),
+                          Expanded(
+                            child: _buildStoreButton(
+                              icon: Icons.apple,
+                              text: "App Store",
+                              subText: "Bientôt disponible",
+                              color: Colors.black,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -210,6 +234,49 @@ class _ProjectCardState extends State<_ProjectCard> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildStoreButton({
+    required IconData icon,
+    required String text,
+    required String subText,
+    required Color color,
+  }) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: Colors.white, size: 24),
+          const SizedBox(width: 8),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  subText.toUpperCase(),
+                  style: const TextStyle(color: Colors.white, fontSize: 8),
+                ),
+                Text(
+                  text,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

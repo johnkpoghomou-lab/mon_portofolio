@@ -144,24 +144,24 @@ class About extends StatelessWidget {
           alignment: mobile ? WrapAlignment.center : WrapAlignment.start,
           children: const [
             _InfoCard(
+              icon: Icons.rocket_launch_rounded,
+              title: 'Statut',
+              value: 'Éditeur d\'Applications',
+            ),
+            _InfoCard(
+              icon: Icons.verified_user_rounded,
+              title: 'Stores',
+              value: 'Compte Développeur Actif',
+            ),
+            _InfoCard(
               icon: Icons.school_outlined,
               title: 'Expertise',
-              value: 'Développement Flutter',
+              value: 'Flutter & Web Fullstack',
             ),
             _InfoCard(
               icon: Icons.cloud_done_outlined,
               title: 'Backend',
-              value: 'Firebase Services',
-            ),
-            _InfoCard(
-              icon: Icons.palette_outlined,
-              title: 'Design',
-              value: 'Interfaces Modernes',
-            ),
-            _InfoCard(
-              icon: Icons.rocket_launch_outlined,
-              title: 'Projets',
-              value: '3+ Applications',
+              value: 'Firebase & Cloud',
             ),
           ],
         )

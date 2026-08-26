@@ -6,6 +6,7 @@ import 'package:mon_portofolio/sections/contacts_section.dart';
 import 'package:mon_portofolio/sections/footer.dart';
 import 'package:mon_portofolio/sections/hero_section.dart';
 import 'package:mon_portofolio/sections/projets_section.dart';
+import 'package:mon_portofolio/sections/services_section.dart';
 import 'package:mon_portofolio/sections/skills_section.dart';
 
 import '../../core/widgets/mydrawer.dart';
@@ -17,6 +18,7 @@ class HomeScreen extends StatelessWidget {
   // 1. Create GlobalKeys for every section
   final GlobalKey homeKey = GlobalKey();
   final GlobalKey aboutKey = GlobalKey();
+  final GlobalKey servicesKey = GlobalKey();
   final GlobalKey skillsKey = GlobalKey();
   final GlobalKey projectsKey = GlobalKey();
   final GlobalKey contactKey = GlobalKey();
@@ -25,6 +27,7 @@ class HomeScreen extends StatelessWidget {
   late final Map<String, GlobalKey> sectionKeys = {
     'Accueil': homeKey,
     'A propos': aboutKey,
+    'Services': servicesKey,
     'Compétences': skillsKey,
     'Projects': projectsKey,
     'Contact': contactKey,
@@ -66,6 +69,8 @@ class HomeScreen extends StatelessWidget {
                         HeroSection(key: homeKey, projectKey: projectsKey),
 
                         SmoothFade(child: About(key: aboutKey)),
+
+                        SmoothFade(child: ServicesSection(key: servicesKey)),
 
                         SmoothFade(child: SkillsSection(key: skillsKey)),
 
